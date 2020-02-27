@@ -156,5 +156,96 @@ function handleCreateMatrizTransposted(qtdLinhas, qtdColunas) {
     }
 
     console.log('EXERCÍCIO: 7\n', '\nMatriz Normal: \n', matriz, '\nMatriz Transposta: \n', transposta);
+
+    return { transposta, matriz2 };
 };
-handleCreateMatrizTransposted();
+let { transposta, matriz2 } = handleCreateMatrizTransposted(3,15);
+
+// Exercício 8
+function handleCompareMatriz(transposta, matriz2) {
+    let isSimetric = false;
+
+    if (transposta.length == matriz2.length) {
+        for (let i = 0; i < transposta.length; i++) {
+            if (transposta[i].length == matriz2[i].length) {
+                for (let j = 0; j < transposta[0].length; j++) {
+                    if (transposta[i][j] == matriz2[i][j]) {
+                        isSimetric = true;
+                    }
+                }
+            }
+        }
+    }
+
+    console.log('EXERCÍCIO 8:\n', '\nÉ simétrica? ', isSimetric ? 'Sim' : 'Não');
+};
+handleCompareMatriz(transposta, matriz2);
+
+// Exercício 9
+function handleCheckIdentityMatriz(transposta) {
+    let isIdentity = true;
+
+    for (let i = 0; i < transposta.length; i++) {
+        for (let j = 0; j < transposta[i].length; j++) {
+            if (i == j && transposta[i][j] != 1) {
+                isIdentity = false;
+                break;
+            }
+            if (i != j && transposta[i][j] != 0) {
+                isIdentity = false;
+                break;
+            }
+        }
+    }
+
+    console.log('EXERCÍCIO 9: \n', '\nA matriz: ', transposta, '\nÉ identidade? ', isIdentity ? 'Sim' : 'Não');
+};
+let identityMatriz = [
+    [1,0,0,0],
+    [0,1,0,0],
+    [0,0,1,0],
+    [0,0,0,1]
+];
+let notIdentityMatriz1 = [
+    [1,0,0,1],
+    [0,1,0,0],
+    [0,0,1,0],
+    [0,0,0,1]
+];
+let notIdentityMatriz2 = [
+    [1,0,0,0],
+    [0,1,0,0],
+    [0,0,1,0],
+    [1,0,0,1]
+];
+handleCheckIdentityMatriz(transposta);
+handleCheckIdentityMatriz(identityMatriz);
+handleCheckIdentityMatriz(notIdentityMatriz1);
+handleCheckIdentityMatriz(notIdentityMatriz2);
+
+// Exercício 10
+var rows = [];
+function handleCreateTheaterRows() {
+    for (let i = 0; i < 30; i++) {
+        rows[i] = [];
+        for (let j = 0; j < 100; j++) {
+            rows[i][j] = 0;
+        }
+    }
+
+    console.log('EXERCÍCIO 10: \n', '\nMatriz: ', rows);
+};
+handleCreateTheaterRows();
+let fileira = 3, cadeira = 7;
+function handleReserveOrSell(fileira, cadeira, type) {
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < rows[i].length; j++) {
+            if (i == fileira && j == cadeira) rows[i][j] = type;
+        }
+    }
+};
+let fileira1 = 1, cadeira2 = 2;
+handleReserveOrSell(fileira, cadeira, 1);
+handleReserveOrSell(fileira1, cadeira2, 2);
+console.log(rows);
+

@@ -104,18 +104,16 @@ function handleCreateMatriz() {
 handleCreateMatriz();
 
 // Exercício 7
-function handleCreateMatrizTransposted() {
-    var qtdLinhas = 10, qtdColunas = 9;
-    var matriz = [];
-    var matriz2 = [];
+function handleCreateMatrizTransposted(qtdLinhas, qtdColunas) {
+    let matriz = [];
     for (let i = 0; i < qtdLinhas; i++) {
         matriz[i] = [];
-        matriz2[i] = [];
         for (let j = 0; j < qtdColunas; j++) {
-            matriz[i][j] = i;
-            matriz2[i][j] = i;
+            matriz[i][j] = parseInt(Math.random() * 20);
         }
     }
+
+    let matriz2 = matriz.map((arr) => { return arr.slice() });
 
     var transposta = [];
     for (let i = 0; i < matriz2.length; i++) {
@@ -134,14 +132,29 @@ function handleCreateMatrizTransposted() {
             }
         }
     } else {
-        for (let i = 0; i < qtdLinhas; i++) {
-            transposta[i] = [];
-            for (let j = 0; j < qtdColunas; j++) {
-                transposta[i][j] = matriz2[i][j];
+        for (let i = 0; i < qtdColunas; i++) {
+            if (matriz2[i]) {
+                let array = matriz2[i].slice();
+
+                transposta[i] = [];
+
+                for (let j = 0; j < qtdLinhas; j++) {
+                    transposta[i][j] = array[j];
+                }
+            } else {
+                transposta[i] = [];
+
+                for (let j = 0; j < matriz2.length; j++) {
+                    for (let k = 0; k < matriz2[j].length; k++) {
+                        if (k == i) {
+                            transposta[i][j] = matriz2[j][k];
+                        }
+                    }
+                }
             }
         }
     }
 
-    console.log('EXERCÍCIO: 7\n\n', 'Matriz Normal: ', matriz, 'Matriz Transposta: ', transposta);
+    console.log('EXERCÍCIO: 7\n', '\nMatriz Normal: \n', matriz, '\nMatriz Transposta: \n', transposta);
 };
 handleCreateMatrizTransposted();

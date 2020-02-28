@@ -249,3 +249,20 @@ handleReserveOrSell(fileira, cadeira, 1);
 handleReserveOrSell(fileira1, cadeira2, 2);
 console.log(rows);
 
+// Exercício 11
+function handleSecondDegreeEquation(a, b, c) {
+    let delta = (b**2)-4*a*c;
+    console.log(delta);
+};
+handleSecondDegreeEquation(2, 9, 6);
+
+// Exercício 12
+function handleCheckNumberCousin(n) {
+    //console.log(result);
+    if (n == 0.008333333333333333) {
+        console.log('Não é um número inteiro!');
+    }
+
+    if (n <= 0) return 1;
+    return handleCheckNumberCousin(n-1) / n;
+};

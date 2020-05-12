@@ -3,7 +3,9 @@ import java.util.*;
 
 public class Exercicios {
    public static void main(String[] args) {
-      exercicio5_ListaDeExercíciosAlgoritmos();
+      int[] a = exercicio01_Aquecimento();
+      
+      exercicio02_Aquecimento(a);
    }
    
    private static void exercicio5_ListaDeExercíciosAlgoritmos() {
@@ -106,7 +108,36 @@ public class Exercicios {
          System.out.println(i);
       }
    }
+   
+   // Ex: 22, 23, 27, 28
+   
+   // Aquecimento
+   public static void exercicio02_Aquecimento(int[] a) {
+      int[] b = new int[a.length];
       
+      for (int i = a.length; i > 0; i--) {
+         b[i] = a[i];
+         
+         System.out.println("Vetor A: " + a[i]);
+         System.out.println("Vetor B: " + b[i]);
+      }
+   }
+   
+   public static int[] exercicio01_Aquecimento() {
+      int[] a = new int[] { 32, 45, 89, 66, 12, 35, 10, 96, 38, 15, 13, 11, 65, 81, 35, 64, 16, 89, 54, 19 };
+      int[] b = new int[a.length];
+      
+      for (int i = 0; i < a.length; i++) {
+         b[i] = a[i];
+         
+         //System.out.println("Vetor A: " + a[i]);
+         //System.out.println("Vetor B: " + b[i]);
+      }
+      
+      return a;
+   }
+      
+   // Recursao Aula 01
    public static int exercicio2_Aula01MetodosRecursivos(int inicial, int razao, int valorMaximo) {
       if (inicial <= valorMaximo){
          System.out.println(inicial);
